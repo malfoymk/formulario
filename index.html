@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulários</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <script src="assets/js/forms.js" defer></script>
+    <script src="assets/js/global.js" defer></script>
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="title">Gerador de Formulário</h1>
+      <img class="logo" src="assets/img/geologo.png" alt="Logo GeoPixel" />
+    </div>
+
+    <main class="app">
+      <button class="dropdown-trigger" type="button" aria-expanded="false" aria-controls="form-dropdown">
+        Selecione seu Formulário
+      </button>
+      <ul class="dropdown" id="form-dropdown">
+        <li><a href="#">Formulário Tipo 1</a></li>
+        <li><a href="#">Formulário Tipo 2</a></li>
+        <li><a href="#">Formulário Tipo 3</a></li>
+        <li><a href="#">Formulário Limpo(Sem Campos)</a></li>
+      </ul>
+
+      <div class="workspace">
+        <section class="panel">
+          <h2 class="panel-title">Formulário em JSON</h2>
+          <textarea class="json-input" id="json-input" spellcheck="false" placeholder='Cole aqui um JSON, ex.: {"nome":"Ana","idade":25}'></textarea>
+          <div class="json-error" id="json-error" role="alert" aria-live="polite"></div>
+        </section>
+
+        <section class="panel">
+          <h2 class="panel-title" id="preview-title">Visualização</h2>
+          <div class="form-preview" id="form-preview"></div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
