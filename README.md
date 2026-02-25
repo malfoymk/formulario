@@ -4,7 +4,7 @@ Gerador/visualizador de formulários a partir de um JSON, com templates prontos 
 
 ## Screenshot
 
-![Screenshot do projeto](assets/img/screenshot.png)
+![Screenshot do projeto]()
 
 ## Funcionalidades
 
