@@ -36,7 +36,18 @@
       <div class="workspace">
         <section class="panel">
           <h2 class="panel-title">Formulário em JSON</h2>
-          <textarea class="json-input" id="json-input" spellcheck="false" placeholder='Cole aqui um JSON'></textarea>
+          <div class="json-toolbar" aria-label="Ações do editor JSON">
+            <select class="json-drafts" id="json-drafts" aria-label="Rascunhos salvos"></select>
+            <button class="tool-button" id="draft-save" type="button">Salvar</button>
+            <button class="tool-button" id="draft-load" type="button">Carregar</button>
+            <button class="tool-button" id="json-export" type="button">Exportar</button>
+            <button class="tool-button" id="json-import" type="button">Importar</button>
+            <input class="json-file" id="json-file" type="file" accept="application/json,.json" />
+          </div>
+          <div class="json-editor" aria-label="Editor JSON">
+            <div class="json-lines" id="json-lines" aria-hidden="true"></div>
+            <textarea class="json-input" id="json-input" spellcheck="false" placeholder='Cole aqui um JSON'></textarea>
+          </div>
           <div class="json-error" id="json-error" role="alert" aria-live="polite"></div>
         </section>
 
