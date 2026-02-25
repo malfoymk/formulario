@@ -19,11 +19,30 @@ Gerador/visualizador de formulários a partir de um JSON, com templates prontos 
 
 ## Como executar
 
-Como o projeto é estático, não precisa de build.
+Recomendado: rodar com Vite para ter servidor local e recarregamento automático.
 
-1. Abra o arquivo `index.html` no navegador.
+1. Instale as dependências:
 
-Opcional (recomendado): usar um servidor local (por exemplo, a extensão “Live Server” do VS Code) para evitar limitações do navegador em alguns cenários.
+```bash
+npm install
+```
+
+2. Suba o servidor de desenvolvimento:
+
+```bash
+npm run dev
+```
+
+O Vite vai exibir no terminal a URL (normalmente `http://localhost:5173`).
+
+Opcional:
+
+```bash
+npm run build
+npm run preview
+```
+
+Observação: o `package-lock.json` é atualizado automaticamente pelo npm após `npm install`.
 
 ## Estrutura do projeto
 
