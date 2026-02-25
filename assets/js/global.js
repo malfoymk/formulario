@@ -29,6 +29,40 @@
 		}
 	};
 
+	const validateSelectlistOptions = (spec) => {
+		const divisions = Array.isArray(spec?.divisions) ? spec.divisions : [];
+		for (const division of divisions) {
+			const theme = typeof division?.theme === "string" ? division.theme : "(sem theme)";
+			const content = Array.isArray(division?.content) ? division.content : [];
+			for (const item of content) {
+				if (!item || typeof item !== "object" || !("selectlist" in item)) continue;
+
+				const label = typeof item.selectlist === "string" ? item.selectlist : "(sem label)";
+				const optionsRaw = typeof item.options === "string" ? item.options : "";
+				const optionsTrimmed = optionsRaw.trim();
+				if (!optionsTrimmed) {
+					throw new Error(
+						`O campo "options" não pode estar em branco no selectlist "${label}" (theme: ${theme}). Use no mínimo: "Selecione;".`
+					);
+				}
+
+				if (!optionsTrimmed.includes(";")) {
+					throw new Error(
+						`O campo "options" do selectlist "${label}" (theme: ${theme}) deve conter no mínimo "Selecione;" (incluindo o ponto e vírgula).`
+					);
+				}
+
+				const tokens = optionsRaw.split(";").map((t) => t.trim());
+				const first = tokens[0] || "";
+				if (first !== "Selecione") {
+					throw new Error(
+						`O campo "options" do selectlist "${label}" (theme: ${theme}) deve começar com "Selecione;".`
+					);
+				}
+			}
+		}
+	};
+
 	const writeDrafts = (drafts) => {
 		try {
 			localStorage.setItem(DRAFTS_STORAGE_KEY, JSON.stringify(drafts));
@@ -670,6 +704,7 @@
 			validateButtonsGroupRequiredButtons(normalized);
 			validateIdAndNameRequired(normalized);
 			validateIdAndNameEqual(normalized);
+			validateSelectlistOptions(normalized);
 
 			const changed = changedIds || changedButtons;
 			if (changed) {
